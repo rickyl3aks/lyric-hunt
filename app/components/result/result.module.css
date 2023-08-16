@@ -1,11 +1,48 @@
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
+  margin-top: 5rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 .link {
   text-decoration: none;
+  text-align: center;
   color: inherit;
-  border: 2px solid tomato;
+  width: auto;
+  border-radius: 10px;
+  background-color: rgb(28, 27, 27);
   margin: 1rem;
+}
+
+.link > h2 {
+  font-size: 1.3rem;
+}
+
+.info > h2::first-letter {
+  color: var(--f-color);
+  font-size: var(--f-size);
+  line-height: var(--f-line-height);
+  font-weight: var(--f-font-weight);
+}
+
+.img {
+  position: relative;
+  border-radius: 10px;
+  bottom: 0;
+  transition: bottom 0.5s;
+}
+
+.link:hover .img {
+  position: relative;
+  bottom: 50px;
+}
+
+.info {
+  padding: 1rem;
+}
+
+.info > p {
+  margin-top: 1rem;
 }

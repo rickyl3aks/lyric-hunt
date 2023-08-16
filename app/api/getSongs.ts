@@ -26,7 +26,7 @@ export const getLyrics = async (query: string, endpoint: string) => {
       const lyrics = await foundSong.lyrics();
       return lyrics;
     } else {
-      console.log("Song not found with the specified endpoint.");
+      return "Lyric not found, please try again with another query";
     }
   } catch (error) {
     throw Error;

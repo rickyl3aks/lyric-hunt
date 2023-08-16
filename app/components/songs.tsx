@@ -4,7 +4,14 @@ const Songs = ({ info, lyrics, image }: any) => {
   return (
     <>
       <div>
-        <Image src={image} alt={image} width={400} height={400} />
+        <Image
+          src={image}
+          alt={image}
+          blurDataURL={image}
+          placeholder="blur"
+          width={400}
+          height={400}
+        />
         <p>{info}</p>
         <p style={{ whiteSpace: "pre" }}>{lyrics}</p>
       </div>

@@ -15,11 +15,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const circleCount = 4;
   return (
     <html lang="en">
       <body>
-        <Search />
-        {children}
+        <div className="pattern">
+          <h1 className="title">Lyric Hunt</h1>
+          {Array.from({ length: circleCount }).map((_, index) => (
+            <div key={index} className="circle">
+              <div className="inner-circle"></div>
+            </div>
+          ))}
+          {children}
+        </div>
       </body>
     </html>
   );

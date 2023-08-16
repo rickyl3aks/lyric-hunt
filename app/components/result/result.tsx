@@ -18,10 +18,12 @@ interface Res {
 
 const Result = ({ result }: any) => {
   const pathName = usePathname();
-  const router = useRouter();
 
-  const lyricPage = (path: string) => {
-    router.push(path);
+  const truncateString = (title: string): string => {
+    if (title.length > 23) {
+      return title.slice(0, 23) + "...";
+    }
+    return title;
   };
 
   return (
@@ -47,19 +49,22 @@ const Result = ({ result }: any) => {
                 prefetch={false}
                 href={`${pathName}/${api_path.replace("/songs/", "")}`}
               >
-                <div
-                // onClick={() => lyricPage(api_path)}
-                >
-                  <h1>{artist_names}</h1>
-                  <h2>{title}</h2>
-                  {header_image_thumbnail_url && (
+                {header_image_thumbnail_url && (
+                  <div className={style.img}>
                     <Image
-                      src={header_image_thumbnail_url}
+                      src={song_art_image_thumbnail_url}
+                      blurDataURL={song_art_image_thumbnail_url}
+                      placeholder="blur"
+                      style={{ borderRadius: "10px" }}
                       width={300}
                       height={300}
                       alt={title}
                     />
-                  )}
+                  </div>
+                )}
+                <div className={style.info}>
+                  <h2>{truncateString(artist_names)}</h2>
+                  <p>{title}</p>
                 </div>
               </Link>
             </React.Fragment>

@@ -1,3 +1,90 @@
 :root {
-  --background-color: red;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: "Lato", sans-serif;
+  --background-color: #2c3e50;
+  --circle-size: 60px;
+  --inner-circle-size: 40px;
+  --circle-color: #3e5770;
+  --inner-circle-color: #5b7fa3;
+  --f-color: #e74c3c;
+  --f-size: 2.5rem;
+  --f-line-height: 1;
+  --f-font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-mono), var(--font-sans);
+  color: #ffffff;
+  background-color: var(--background-color);
+}
+
+.title {
+  text-align: center;
+  margin: 2rem;
+}
+
+.title::first-letter {
+  color: var(--f-color);
+  font-size: var(--f-size);
+  line-height: var(--f-line-height);
+  font-weight: var(--f-font-weight);
+}
+
+.pattern {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  z-index: -5;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  background-color: var(--circle-color);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.inner-circle {
+  width: var(--inner-circle-size);
+  height: var(--inner-circle-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--inner-circle-color);
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.circle:nth-child(1) {
+  top: calc(50vh - 100px);
+  left: calc(50vw - 100px);
+}
+
+.circle:nth-child(2) {
+  top: calc(50vh + 100px);
+  left: calc(50vw + 160px);
+}
+
+.circle:nth-child(3) {
+  top: calc(50vh - 80px);
+  left: calc(50vw - 160px);
+}
+
+.circle:nth-child(4) {
+  top: calc(50vh + 40px);
+  left: calc(50vw + 220px);
 }
