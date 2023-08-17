@@ -53,17 +53,15 @@ const Lyrics = ({
             style={{ objectFit: "contain" }}
           />
         </div>
-        <div className={style.iconContainer}>
-          <Image
-            src={image_url}
-            blurDataURL={image_url}
-            placeholder="blur"
-            alt={artist_names}
-            width={100}
-            height={100}
-            className={style.img}
-          />
-        </div>
+        <Image
+          src={image_url}
+          blurDataURL={image_url}
+          placeholder="blur"
+          alt={artist_names}
+          width={100}
+          height={100}
+          className={style.img}
+        />
 
         <div className={style.info}>
           <p>Artist: {artist_names}</p>
@@ -82,13 +80,19 @@ const Lyrics = ({
             src={song_art_image_url}
             alt={title}
             blurDataURL={song_art_image_url}
-            style={{ borderRadius: "10px" }}
+            style={{
+              borderRadius: "10px",
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+            }}
             placeholder="blur"
             width={200}
             height={200}
           />
         </div>
-        <div className={style.lyrics}>{getLyrics}</div>
+        <div className={style.lyricsContainer}>
+          <div className={style.lyrics}>{getLyrics}</div>
+        </div>
       </section>
     </>
   );
