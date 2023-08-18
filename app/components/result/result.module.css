@@ -1,7 +1,11 @@
+.title {
+  text-align: center;
+  margin: 2rem;
+}
+
 .container {
   display: grid;
   justify-content: center;
-  margin-top: 5rem;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }

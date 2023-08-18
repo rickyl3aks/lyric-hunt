@@ -1,7 +1,9 @@
+import style from "./loading.module.css";
+
 const Loading = () => {
   return (
     <>
-      <div>Loading...</div>
+      <div className={style.hourglass}></div>
     </>
   );
 };

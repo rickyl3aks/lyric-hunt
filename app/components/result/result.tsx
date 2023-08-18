@@ -1,7 +1,7 @@
 "use client";
 
 import style from "./result.module.css";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -18,7 +18,6 @@ interface Res {
 
 const Result = ({ result }: any) => {
   const pathName = usePathname();
-
   const truncateString = (title: string): string => {
     if (title.length > 23) {
       return title.slice(0, 23) + "...";
@@ -26,8 +25,16 @@ const Result = ({ result }: any) => {
     return title;
   };
 
+  const title = (query: string): string => {
+    const decodedString = decodeURIComponent(query).replace("/", "");
+    const capitalizedString =
+      decodedString.charAt(0).toUpperCase() + decodedString.slice(1);
+    return `"${capitalizedString}"`;
+  };
+
   return (
     <>
+      <h1 className={style.title}>{title(pathName)}</h1>
       <div className={style.container}>
         {result.map((songs: { result: Res }) => {
           const {

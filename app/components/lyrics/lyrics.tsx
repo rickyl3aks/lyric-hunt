@@ -1,8 +1,7 @@
-"use client";
-
 import { useRouter } from "next/navigation";
 import style from "./lyrics.module.css";
 import Image from "next/image";
+import Button from "../button/button";
 
 interface Artist {
   artist_names: string;
@@ -26,7 +25,6 @@ const Lyrics = ({
   getLyrics: string;
   getArtist: Artist;
 }) => {
-  const router = useRouter();
   const {
     artist_names,
     title,
@@ -50,30 +48,33 @@ const Lyrics = ({
             placeholder="blur"
             fill
             alt={title}
-            style={{ objectFit: "contain" }}
+            style={{ objectFit: "cover" }}
           />
+          <div className={style.headerImg} />
         </div>
         <Image
           src={image_url}
           blurDataURL={image_url}
           placeholder="blur"
           alt={artist_names}
-          width={100}
-          height={100}
+          width={150}
+          height={150}
           className={style.img}
         />
-
-        <div className={style.info}>
-          <p>Artist: {artist_names}</p>
-          <p>Title: {title}</p>
-          <p>Release: {release_date_for_display}</p>
+        <div className={style.infoContainer}>
+          <div className={style.info}>
+            <p>Artist:</p>
+            <p>Title:</p>
+            <p>Release:</p>
+          </div>
+          <div className={style.info}>
+            <p>{artist_names}</p>
+            <p>{title}</p>
+            <p>{release_date_for_display}</p>
+          </div>
         </div>
       </section>
-      <div className={style.btnContainer}>
-        <button className={style.btn} onClick={router.back}>
-          Back
-        </button>
-      </div>
+      <Button text="back" />
       <section>
         <div className={style.songContainer}>
           <Image
