@@ -45,7 +45,8 @@
 }
 
 .infoContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.6);
   padding: 1rem;
@@ -55,6 +56,17 @@
   left: -100%;
   top: 0;
   animation: slideInFromLeft 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.infoPair {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: bold;
+  color: var(--f-color);
 }
 
 @keyframes slideInFromLeft {

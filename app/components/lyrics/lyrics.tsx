@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import style from "./lyrics.module.css";
 import Image from "next/image";
 import Button from "../button/button";
@@ -34,9 +33,9 @@ const Lyrics = ({
     song_art_image_url,
     release_date_for_display,
     primary_artist,
-  } = getArtist;
+  } = getArtist || {};
 
-  const { header_image_url: headerImg, image_url } = primary_artist;
+  const { header_image_url: headerImg, image_url } = primary_artist || {};
 
   return (
     <>
@@ -62,15 +61,17 @@ const Lyrics = ({
           className={style.img}
         />
         <div className={style.infoContainer}>
-          <div className={style.info}>
-            <p>Artist:</p>
-            <p>Title:</p>
-            <p>Release:</p>
+          <div className={style.infoPair}>
+            <p className={style.label}>Artist:</p>
+            <p className={style.value}>{artist_names}</p>
           </div>
-          <div className={style.info}>
-            <p>{artist_names}</p>
-            <p>{title}</p>
-            <p>{release_date_for_display}</p>
+          <div className={style.infoPair}>
+            <p className={style.label}>Title:</p>
+            <p className={style.value}>{title}</p>
+          </div>
+          <div className={style.infoPair}>
+            <p className={style.label}>Release:</p>
+            <p className={style.value}>{release_date_for_display}</p>
           </div>
         </div>
       </section>
