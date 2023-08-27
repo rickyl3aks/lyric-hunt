@@ -13,7 +13,7 @@ const Search = () => {
 
   useEffect(() => {
     if (submittedValue !== "") {
-      router.push("search?q=" + submittedValue);
+      router.push(submittedValue);
     }
   }, [submittedValue, router]);
 

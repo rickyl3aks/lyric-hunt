@@ -19,7 +19,7 @@ interface Res {
   };
 }
 
-const Result = ({ result, path }: any) => {
+const Result = ({ result }: any) => {
   const pathName = usePathname();
   const truncateString = (title: string): string => {
     if (title.length > 23) {
@@ -37,7 +37,7 @@ const Result = ({ result, path }: any) => {
 
   return (
     <>
-      <h1 className={style.title}>{title(path)}</h1>
+      <h1 className={style.title}>{title(pathName)}</h1>
       <div className={style.container}>
         {result.map((songs: { result: Res }) => {
           const {
@@ -59,7 +59,7 @@ const Result = ({ result, path }: any) => {
                 className={style.link}
                 prefetch={false}
                 href={{
-                  pathname: `${path}/info`,
+                  pathname: `${pathName}/info`,
                   query: {
                     artist: primary_artist.api_path.replace("/artists/", ""),
                     lyrics: api_path.replace("/songs/", ""),
