@@ -12,33 +12,26 @@ const LyricsPage = async ({
   params: { query: string; lyrics: string };
   searchParams: { artist: string; lyrics: string };
 }) => {
-  try {
-    const { query } = params;
-    const { artist } = searchParams;
-    const decodedString = decodeURIComponent(query);
+  const { query } = params;
+  const { artist } = searchParams;
+  const decodedString = decodeURIComponent(query);
 
-    const [lyrics, artistInfo] = await Promise.all([
-      getLyrics(decodedString, "/songs/" + searchParams.lyrics),
-      getArtist(decodedString, "/songs/" + searchParams.lyrics),
-      // getSinger(parseInt(artist))
-    ]);
+  const [lyrics, artistInfo] = await Promise.all([
+    getLyrics(decodedString, "/songs/" + searchParams.lyrics),
+    getArtist(decodedString, "/songs/" + searchParams.lyrics),
+    // getSinger(parseInt(artist))
+  ]);
 
-    const Lyrics = dynamic(() => import("@/app/components/lyrics/lyrics"), {
-      ssr: false,
-    });
+  const Lyrics = dynamic(() => import("@/app/components/lyrics/lyrics"), {
+    ssr: false,
+  });
 
-    return (
-      <Lyrics getLyrics={lyrics} getArtist={artistInfo.result}>
-        {/* <Infos artist={singer} /> */}
-        <span/>
-      </Lyrics>
-    );
-  } catch (error) {
-    console.error("An error occurred:", error);
-    return (
-      <div>Error loading lyrics. Please try again with some other query</div>
-    );
-  }
+  return (
+    <Lyrics getLyrics={lyrics} getArtist={artistInfo.result}>
+      {/* <Infos artist={singer} /> */}
+      <span />
+    </Lyrics>
+  );
 };
 
 export default LyricsPage;
