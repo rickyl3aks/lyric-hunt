@@ -5,6 +5,10 @@ import Button from "../button/button";
 interface Artist {
   artist_names: string;
   title: string;
+  primary_album: string;
+  primary_tag: string;
+  lyrics_language: string;
+  hot: string;
   header_image_thumbnail_url: string;
   header_image_url: string;
   release_date_for_display: string;
@@ -20,13 +24,19 @@ interface Artist {
 const Lyrics = ({
   getLyrics,
   getArtist,
+  children,
 }: {
   getLyrics: string;
   getArtist: Artist;
+  children: React.ReactElement;
 }) => {
   const {
     artist_names,
     title,
+    primary_album,
+    primary_tag,
+    lyrics_language,
+    hot,
     header_image_thumbnail_url,
     header_image_url,
     song_art_image_thumbnail_url,
@@ -76,6 +86,28 @@ const Lyrics = ({
         </div>
       </section>
       <Button text="back" />
+      {/* <div className={style.containerInfo}>
+        <details className={style.details}>
+          <summary className={style.summary}>
+            <h2 className={style.artistName}>{artist_names}</h2>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={style.feather}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <div className={style.artistInfo}>{children}</div>
+        </details>
+      </div> */}
       <section>
         <div className={style.songContainer}>
           <Image

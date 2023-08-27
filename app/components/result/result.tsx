@@ -14,9 +14,12 @@ interface Res {
   header_image_thumbnail_url: string;
   release_data_for_display: string;
   api_path: string;
+  primary_artist: {
+    api_path: string;
+  };
 }
 
-const Result = ({ result }: any) => {
+const Result = ({ result, path }: any) => {
   const pathName = usePathname();
   const truncateString = (title: string): string => {
     if (title.length > 23) {
@@ -34,7 +37,7 @@ const Result = ({ result }: any) => {
 
   return (
     <>
-      <h1 className={style.title}>{title(pathName)}</h1>
+      <h1 className={style.title}>{title(path)}</h1>
       <div className={style.container}>
         {result.map((songs: { result: Res }) => {
           const {
@@ -46,6 +49,7 @@ const Result = ({ result }: any) => {
               song_art_image_url,
               release_data_for_display,
               api_path,
+              primary_artist,
             },
           } = songs;
           return (
@@ -54,7 +58,13 @@ const Result = ({ result }: any) => {
                 key={title}
                 className={style.link}
                 prefetch={false}
-                href={`${pathName}/${api_path.replace("/songs/", "")}`}
+                href={{
+                  pathname: `${path}/info`,
+                  query: {
+                    artist: primary_artist.api_path.replace("/artists/", ""),
+                    lyrics: api_path.replace("/songs/", ""),
+                  },
+                }}
               >
                 {header_image_thumbnail_url && (
                   <div className={style.img}>
@@ -62,9 +72,9 @@ const Result = ({ result }: any) => {
                       src={song_art_image_thumbnail_url}
                       blurDataURL={song_art_image_thumbnail_url}
                       placeholder="blur"
-                      style={{ borderRadius: "10px" }}
-                      width={300}
-                      height={300}
+                      style={{ borderRadius: "0.5rem" }}
+                      width={140}
+                      height={140}
                       alt={title}
                     />
                   </div>

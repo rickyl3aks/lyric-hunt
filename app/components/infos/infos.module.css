@@ -1,0 +1,12 @@
+.infos {
+  white-space: pre-line;
+}
+
+.infos a {
+  color: inherit;
+}
+
+.infos img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
