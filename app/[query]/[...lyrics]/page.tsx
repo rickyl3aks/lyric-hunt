@@ -19,7 +19,7 @@ const LyricsPage = async ({
   const [lyrics, artistInfo] = await Promise.all([
     getLyrics(decodedString, "/songs/" + searchParams.lyrics),
     getArtist(decodedString, "/songs/" + searchParams.lyrics),
-    // getSinger(parseInt(artist))
+    getSinger(parseInt(artist)),
   ]);
 
   const Lyrics = dynamic(() => import("@/app/components/lyrics/lyrics"), {
@@ -28,8 +28,7 @@ const LyricsPage = async ({
 
   return (
     <Lyrics getLyrics={lyrics} getArtist={artistInfo.result}>
-      {/* <Infos artist={singer} /> */}
-      <span />
+      <Infos singer={artist} />
     </Lyrics>
   );
 };

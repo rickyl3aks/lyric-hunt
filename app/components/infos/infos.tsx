@@ -23,8 +23,8 @@ interface Item {
   children: any;
 }
 
-const Infos = async ({ artist }: { artist: any }) => {
-  // const artistInfo = await getSinger(parseInt(artist));
+const Infos = async ({ singer }: { singer: any }) => {
+  const artist = await getSinger(parseInt(singer));
 
   const renderElement: any = (item: Item) => {
     if (typeof item === "string") {

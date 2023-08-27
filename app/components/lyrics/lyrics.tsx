@@ -86,7 +86,7 @@ const Lyrics = ({
         </div>
       </section>
       <Button text="back" />
-      {/* <div className={style.containerInfo}>
+      <div className={style.containerInfo}>
         <details className={style.details}>
           <summary className={style.summary}>
             <h2 className={style.artistName}>{artist_names}</h2>
@@ -107,7 +107,7 @@ const Lyrics = ({
           </summary>
           <div className={style.artistInfo}>{children}</div>
         </details>
-      </div> */}
+      </div>
       <section>
         <div className={style.songContainer}>
           <Image
