@@ -3,19 +3,17 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import Footer from "./components/footer/footer";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lyric hunt",
   description: "Looking for your favourite lyric song",
+  viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const circleCount = 4;
   return (
     <html lang="en">
